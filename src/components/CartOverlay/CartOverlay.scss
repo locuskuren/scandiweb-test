@@ -1,0 +1,107 @@
+@import '../../exports.scss';
+
+.cart {
+  .cart-logo {
+    @include flexCenter;
+    cursor: pointer;
+
+    .badge {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.9rem;
+      position: relative;
+      font-weight: 500;
+      background-color: $text-primary;
+      color: #fff;
+      margin-left: -8px;
+      top: -9px;
+      padding: 3px 5px;
+      border-radius: 50%;
+      text-align: center;
+    }
+  }
+
+  .cart-overlay-background {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 80px;
+    background-color: black;
+    opacity: 0.2;
+    z-index: 2;
+  }
+
+  .mini-cart {
+    @include overlaySettings;
+    top: 80px;
+    margin-right: 80px;
+    width: 305px;
+    height: 677px;
+    background-color: white;
+    padding-left: 10px;
+
+    .min-details {
+      span {
+        font-weight: 700;
+      }
+      margin: 20px 0;
+    }
+
+    .cart-items {
+      padding-right: 10px;
+      height: 480px;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 5px;
+        margin-left: 10px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    }
+
+    .total-price {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+      margin-right: 10px;
+
+      .item {
+        font-weight: 700;
+      }
+    }
+
+    .buttons {
+      margin-right: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        width: 138px;
+        height: 41px;
+        cursor: pointer;
+      }
+
+      .white {
+        background-color: white;
+        border: 1px solid black;
+      }
+
+      .green {
+        background-color: $button-primary;
+        color: white;
+        border: 1px solid $button-primary;
+      }
+    }
+  }
+}

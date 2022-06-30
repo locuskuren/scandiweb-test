@@ -1,0 +1,50 @@
+@import '../../exports.scss';
+
+.cart-page {
+  @include flexVerticalCenter;
+  margin: 70px 0;
+
+  .content {
+    @include contentWidth;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 50px;
+    }
+
+    .cart-items-list {
+      .line {
+        width: 100%;
+        border-bottom: 1px solid #e5e5e5;
+      }
+    }
+
+    .order-details {
+      margin-top: 40px;
+      width: 198px;
+      display: flex;
+
+      .detail {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .bold {
+        font-weight: 700;
+        margin-left: 5px;
+      }
+    }
+
+    .order-button {
+      background-color: $button-primary;
+      border: none;
+      color: white;
+      height: 43px;
+      width: 279px;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import '../../exports.scss';
+
+.header {
+  @include flexVerticalCenter;
+
+  .content {
+    @include contentWidth;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    nav {
+      a {
+        display: inline-block;
+        padding: 32px 10px;
+        font-weight: 500;
+      }
+
+      .active {
+        border-bottom: 2px solid $button-primary;
+        color: $button-primary;
+      }
+    }
+
+    .actions {
+      display: flex;
+    }
+  }
+}

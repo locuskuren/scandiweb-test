@@ -1,0 +1,35 @@
+/*Define all colours */
+$button-primary: #5ece7b;
+$text-primary: #1d1f22;
+$text-secondary: #8d8f9a;
+
+@mixin contentWidth {
+  width: 1240px;
+  padding: 0 100px;
+
+  @media screen and (max-width: 1240px) {
+    padding: 0 30px;
+    width: calc(100vw - 30px);
+  }
+}
+
+@mixin flexVerticalCenter {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin overlaySettings {
+  position: absolute;
+  right: calc((100vw - 1470px) / 2);
+  z-index: 2;
+
+  @media screen and (max-width: 1450px) {
+    right: 0;
+  }
+}

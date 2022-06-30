@@ -1,0 +1,14 @@
+@import './exports.scss';
+
+body {
+  color: $text-primary;
+}
+
+button {
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: $text-primary;
+}

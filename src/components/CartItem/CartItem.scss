@@ -1,0 +1,93 @@
+@import '../../exports.scss';
+
+.cart-item {
+  display: flex;
+  margin: 30px 0;
+
+  .details {
+    flex: 1;
+
+    .name {
+      margin-bottom: 13px;
+    }
+
+    .price {
+      margin-bottom: 13px;
+    }
+  }
+  .quantity-image-container {
+    display: flex;
+
+    .quantity {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-right: 20px;
+
+      button {
+        @include flexCenter;
+        width: 24px;
+        height: 24px;
+        background-color: transparent;
+        border: 1px solid black;
+        font-size: 25px;
+        cursor: pointer;
+      }
+    }
+
+    .mini-quantity {
+      margin: 0 5px;
+    }
+
+    .image {
+      .mini-image {
+        width: 121px;
+        min-height: 190px;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .regular-image {
+        width: 200px;
+        min-height: 288px;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .arrows {
+        display: flex;
+        position: absolute;
+        margin-top: -35px;
+        margin-left: 140px;
+
+        .arrow-container {
+          @include flexCenter;
+          height: 20px;
+          width: 12px;
+          font-size: 1.1rem;
+          margin: 0 2px;
+          color: white;
+          padding: 2px 5px;
+          background-color: rgba(0, 0, 0, 0.5);
+
+          .arrow {
+            padding: 0 0 10px 10px;
+            border-bottom: 2px solid white;
+            border-left: 2px solid white;
+            cursor: pointer;
+          }
+
+          .left {
+            transform: rotate(45deg);
+            margin-right: -5px;
+          }
+
+          .right {
+            transform: rotate(225deg);
+            margin-left: -5px;
+          }
+        }
+      }
+    }
+  }
+}

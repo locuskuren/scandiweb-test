@@ -1,0 +1,43 @@
+@import '../../exports.scss';
+
+.product-card {
+  padding: 10px 15px;
+  margin: 30px 13px;
+
+  &:hover {
+    box-shadow: 1px 1px 30px -10px grey;
+  }
+
+  .product-image {
+    width: 354px;
+    height: 330px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: cen;
+    @include flexCenter;
+    color: #8d8f9a;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+
+  .add-to-cart {
+    position: absolute;
+    margin-left: 275px;
+    margin-top: 295px;
+    cursor: pointer;
+  }
+
+  .product-name {
+    margin-top: 30px;
+    color: $text-primary;
+  }
+
+  .price {
+    margin: 10px 0;
+    font-weight: 600;
+  }
+}
+
+.out-of-stock {
+  opacity: 0.5;
+}

@@ -1,0 +1,77 @@
+@import '../../exports.scss';
+
+.attributes {
+  margin-bottom: 10px;
+
+  .title {
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .mini-title {
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  .list {
+    display: flex;
+    align-items: center;
+
+    .attribute {
+      @include flexCenter;
+      height: 45px;
+      width: 63px;
+      border: 1px solid black;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .selected-attribute {
+      background-color: $text-primary;
+      color: white;
+    }
+
+    .mini-attribute {
+      width: 25px;
+      height: 26px;
+      margin-right: 3px;
+      font-size: 12px;
+      cursor: default;
+    }
+
+    .capacity-attribute-mini {
+      width: 38px;
+    }
+
+    .color-attribute-wrapper {
+      margin-right: 3px;
+      padding: 2px;
+      border: 1px solid transparent;
+      cursor: pointer;
+
+      .color-attribute {
+        width: 32px;
+        height: 32px;
+      }
+
+      .white {
+        width: 30px;
+        height: 30px;
+        border: 1px solid black;
+      }
+
+      .mini-color {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .mini-color-attribute-wrapper {
+      cursor: default;
+    }
+
+    .selected-color-attribute {
+      border: 1px solid $button-primary;
+    }
+  }
+}
