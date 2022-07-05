@@ -36,7 +36,6 @@
       height: 26px;
       margin-right: 3px;
       font-size: 12px;
-      cursor: default;
     }
 
     .capacity-attribute-mini {
@@ -72,6 +71,10 @@
 
     .selected-color-attribute {
       border: 1px solid $button-primary;
+    }
+
+    .default-cursos {
+      cursor: default;
     }
   }
 }

@@ -16,16 +16,19 @@ export class ProductDetailsAttributes extends Component {
             ? attribute.items.map((item) => (
                 <div
                   className={`attribute ${
-                    selectedAttributes[attribute.id] === item.id &&
-                    'selected-attribute'
+                    selectedAttributes[attribute.id] === item.id
+                      ? 'selected-attribute'
+                      : ''
                   } ${mini ? 'mini-attribute' : ''} ${
                     attribute.id === 'Capacity' && mini
                       ? 'capacity-attribute-mini'
                       : ''
-                  }`}
+                  } ${handleAttribute ? '' : 'default-cursos'}`}
                   key={item.id}
                   onClick={() =>
-                    !mini && handleAttribute(attribute.id, item.id)
+                    handleAttribute &&
+                    !mini &&
+                    handleAttribute(attribute.id, item.id)
                   }
                   style={{
                     backgroundColor:
@@ -38,17 +41,22 @@ export class ProductDetailsAttributes extends Component {
             : attribute.items.map((item) => (
                 <div
                   className={`color-attribute-wrapper ${
-                    selectedAttributes[attribute.id] === item.id &&
-                    'selected-color-attribute'
-                  } ${mini ? 'mini-color-attribute-wrapper' : ''}`}
+                    selectedAttributes[attribute.id] === item.id
+                      ? 'selected-color-attribute'
+                      : ''
+                  } ${mini ? 'mini-color-attribute-wrapper' : ''} ${
+                    handleAttribute ? '' : 'default-cursos'
+                  }`}
                   key={item.id}
                 >
                   <div
                     className={`color-attribute ${
-                      item.displayValue === 'White' && 'white'
+                      item.displayValue === 'White' ? 'white' : ''
                     } ${mini ? 'mini-color' : ''}`}
                     onClick={() =>
-                      !mini && handleAttribute(attribute.id, item.id)
+                      handleAttribute &&
+                      !mini &&
+                      handleAttribute(attribute.id, item.id)
                     }
                     style={{
                       backgroundColor: item.value,

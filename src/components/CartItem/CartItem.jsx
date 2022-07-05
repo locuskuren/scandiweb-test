@@ -75,7 +75,6 @@ export class CartItem extends Component {
                 <ProductDetailsAttributes
                   attribute={attribute}
                   selectedAttributes={selectedAttributes}
-                  handleAttribute={this.handleAttribute}
                   key={attribute.id}
                   mini={mini}
                 />
