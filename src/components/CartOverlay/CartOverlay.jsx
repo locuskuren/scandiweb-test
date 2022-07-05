@@ -48,12 +48,15 @@ export class CartOverlay extends Component {
   render() {
     const { cartIsShown } = this.state;
     const { itemsQuantity, items, totalPrice, selectedCurrency } = this.props;
-    const tax =
-      Math.round(
-        (totalPrice[selectedCurrency.label] * 0.21 + Number.EPSILON) * 100
-      ) / 100;
+    const tax = selectedCurrency
+      ? Math.round(
+          (totalPrice[selectedCurrency.label] * 0.21 + Number.EPSILON) * 100
+        ) / 100
+      : 0;
 
-    const totalPriceWithTax = totalPrice[selectedCurrency.label] + tax || 0;
+    const totalPriceWithTax = selectedCurrency
+      ? totalPrice[selectedCurrency.label] + tax || 0
+      : 0;
 
     return (
       <div className="cart">
