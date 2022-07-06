@@ -14,12 +14,15 @@ const mapStateToProps = (state) => {
 export class Cart extends Component {
   render() {
     const { items, itemsQuantity, selectedCurrency, totalPrice } = this.props;
-    const tax =
-      Math.round(
-        (totalPrice[selectedCurrency.label] * 0.21 + Number.EPSILON) * 100
-      ) / 100 || 0;
+    const tax = selectedCurrency
+      ? Math.round(
+          (totalPrice[selectedCurrency.label] * 0.21 + Number.EPSILON) * 100
+        ) / 100 || 0
+      : 0;
 
-    const totalPriceWithTax = totalPrice[selectedCurrency.label] + tax || 0;
+    const totalPriceWithTax = selectedCurrency
+      ? totalPrice[selectedCurrency.label] + tax || 0
+      : 0;
 
     return (
       <div className="cart-page">
@@ -45,12 +48,12 @@ export class Cart extends Component {
             </div>
             <div className="items">
               <div className="detail bold">
-                {selectedCurrency.symbol}
+                {selectedCurrency && selectedCurrency.symbol}
                 {numberWithCommas(parseFloat(tax).toFixed(2))}
               </div>
               <div className="detail bold">{itemsQuantity}</div>
               <div className="detail bold">
-                {selectedCurrency.symbol}
+                {selectedCurrency && selectedCurrency.symbol}
                 {numberWithCommas(parseFloat(totalPriceWithTax).toFixed(2))}
               </div>
             </div>
