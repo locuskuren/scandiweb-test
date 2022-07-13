@@ -11,13 +11,17 @@
   .product-image {
     width: 354px;
     height: 330px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: cen;
+    object-fit: contain;
     @include flexCenter;
-    color: #8d8f9a;
     font-weight: 500;
     font-size: 1.1rem;
+  }
+
+  .out-of-stock-text {
+    position: absolute;
+    margin-top: -165px;
+    margin-left: 115px;
+    color: $text-secondary;
   }
 
   .add-to-cart {

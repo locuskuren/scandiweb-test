@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import parse from 'html-react-parser';
 import { fetchproduct, productReset } from '../../redux/product';
 import { addToCart } from '../../redux/cart';
 import { withRouter } from 'react-router-dom';
@@ -83,9 +84,9 @@ export class ProductDetailsPage extends Component {
             <div className="product-images">
               <div className="gallery">
                 {product.gallery.map((image, index) => (
-                  <div
+                  <img
                     className="image"
-                    style={{ backgroundImage: `url(${image})` }}
+                    src={image}
                     alt={`${product.name} first gallery item`}
                     key={image}
                     onClick={() =>
@@ -139,10 +140,7 @@ export class ProductDetailsPage extends Component {
             </div>
 
             {product.description && (
-              <div
-                className="description"
-                dangerouslySetInnerHTML={{ __html: product.description }}
-              />
+              <div className="description">{parse(product.description)}</div>
             )}
           </div>
         </div>

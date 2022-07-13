@@ -30,10 +30,6 @@ export class ProductDetailsAttributes extends Component {
                     !mini &&
                     handleAttribute(attribute.id, item.id)
                   }
-                  style={{
-                    backgroundColor:
-                      attribute.type === 'swatch' ? item.value : '',
-                  }}
                 >
                   {item.value}
                 </div>

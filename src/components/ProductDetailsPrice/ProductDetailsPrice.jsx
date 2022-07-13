@@ -5,11 +5,11 @@ import './ProductDetailsPrice.scss';
 
 export class ProductDetailsPrice extends Component {
   render() {
-    const { price, mini, multiplier } = this.props;
+    const { price, mini } = this.props;
     return (
       <div className={`${mini ? 'mini-' : ''}product-details-price`}>
         {price.currency.symbol}{' '}
-        {numberWithCommas(parseFloat(price.amount * multiplier).toFixed(2))}
+        {numberWithCommas(parseFloat(price.amount).toFixed(2))}
       </div>
     );
   }

@@ -1,6 +1,5 @@
-import { gql } from 'graphql-request';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { client } from '../graphql/client';
+import { client, categoryQuery } from '../graphql';
 
 const initialState = {
   loading: false,
@@ -8,40 +7,12 @@ const initialState = {
   error: '',
 };
 
-const query = gql`
-  query getCategory($title: String!) {
-    category(input: { title: $title }) {
-      name
-      products {
-        id
-        brand
-        name
-        inStock
-        gallery
-        attributes {
-          id
-          items {
-            displayValue
-            value
-            id
-          }
-        }
-        prices {
-          currency {
-            label
-            symbol
-          }
-          amount
-        }
-      }
-    }
-  }
-`;
-
 export const fetchCategory = createAsyncThunk(
   'category/fetchCategory',
   (title) => {
-    return client.request(query, { title }).then((response) => response);
+    return client
+      .request(categoryQuery, { title })
+      .then((response) => response);
   }
 );
 

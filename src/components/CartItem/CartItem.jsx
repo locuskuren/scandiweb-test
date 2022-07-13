@@ -63,11 +63,7 @@ export class CartItem extends Component {
             <ProductDetailsName brand={brand} name={name} mini={mini} />
           </div>
           <div className="price">
-            <ProductDetailsPrice
-              price={prices[currencyIndex]}
-              mini={mini}
-              multiplier={quantity}
-            />
+            <ProductDetailsPrice price={prices[currencyIndex]} mini={mini} />
           </div>
           {attributes.length > 0 && (
             <div className="attributes">

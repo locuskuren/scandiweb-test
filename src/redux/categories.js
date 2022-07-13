@@ -1,6 +1,5 @@
-import { gql } from 'graphql-request';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { client } from '../graphql/client';
+import { client, categoriesQuery } from '../graphql/';
 
 const initialState = {
   loading: false,
@@ -8,18 +7,10 @@ const initialState = {
   error: '',
 };
 
-const query = gql`
-  {
-    categories {
-      name
-    }
-  }
-`;
-
 export const fetchCategories = createAsyncThunk(
   'categories/fetchCategories',
   () => {
-    return client.request(query).then((response) => response);
+    return client.request(categoriesQuery).then((response) => response);
   }
 );
 

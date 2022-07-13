@@ -41,6 +41,12 @@ export class CartOverlay extends Component {
     document.addEventListener('click', this.listener(), { capture: true });
   }
 
+  componentDidUpdate() {
+    this.state.cartIsShown
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'unset');
+  }
+
   componentWillUnmount() {
     document.removeEventListener('click', this.listener(), { capture: true });
   }
@@ -48,18 +54,9 @@ export class CartOverlay extends Component {
   render() {
     const { cartIsShown } = this.state;
     const { itemsQuantity, items, totalPrice, selectedCurrency } = this.props;
-    const tax = selectedCurrency
-      ? Math.round(
-          (totalPrice[selectedCurrency.label] * 0.21 + Number.EPSILON) * 100
-        ) / 100
-      : 0;
-
-    const totalPriceWithTax = selectedCurrency
-      ? totalPrice[selectedCurrency.label] + tax || 0
-      : 0;
 
     return (
-      <div className="cart">
+      <div className="cart-overlay">
         <div
           className="cart-logo"
           ref={this.cartLogoRef}
@@ -75,14 +72,7 @@ export class CartOverlay extends Component {
           <CartLogo />
           {itemsQuantity > 0 && <div className="badge"> {itemsQuantity} </div>}
         </div>
-        {cartIsShown && (
-          <div
-            className="cart-overlay-background"
-            style={{
-              height: `${document.documentElement.scrollHeight - 80}px`,
-            }}
-          ></div>
-        )}
+        {cartIsShown && <div className="cart-overlay-background"></div>}
         {cartIsShown && (
           <div className="mini-cart" ref={this.cartRef}>
             <div className="min-details">
@@ -102,7 +92,10 @@ export class CartOverlay extends Component {
                 {selectedCurrency.symbol}
                 {numberWithCommas(
                   parseFloat(
-                    Math.round((totalPriceWithTax + Number.EPSILON) * 100) / 100
+                    Math.round(
+                      (totalPrice[selectedCurrency.label] ||
+                        0 + Number.EPSILON) * 100
+                    ) / 100
                   ).toFixed(2)
                 )}
               </div>

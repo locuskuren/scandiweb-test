@@ -20,10 +20,6 @@ export class Cart extends Component {
         ) / 100 || 0
       : 0;
 
-    const totalPriceWithTax = selectedCurrency
-      ? totalPrice[selectedCurrency.label] + tax || 0
-      : 0;
-
     return (
       <div className="cart-page">
         <div className="content">
@@ -54,7 +50,9 @@ export class Cart extends Component {
               <div className="detail bold">{itemsQuantity}</div>
               <div className="detail bold">
                 {selectedCurrency && selectedCurrency.symbol}
-                {numberWithCommas(parseFloat(totalPriceWithTax).toFixed(2))}
+                {numberWithCommas(
+                  parseFloat(totalPrice[selectedCurrency.label] || 0).toFixed(2)
+                )}
               </div>
             </div>
           </div>

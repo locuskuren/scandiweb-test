@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
+import './BadRoute.scss';
+
 export class BadRoute extends Component {
   render() {
     return (
-      <main style={{ textAlign: 'center', marginTop: '100px' }}>
+      <main className="bad-route">
         <p>There's nothing here!</p>
       </main>
     );

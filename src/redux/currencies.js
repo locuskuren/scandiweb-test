@@ -1,6 +1,5 @@
-import { gql } from 'graphql-request';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { client } from '../graphql/client';
+import { client, currenciesQuery } from '../graphql';
 
 const initialState = {
   loading: false,
@@ -9,19 +8,10 @@ const initialState = {
   error: '',
 };
 
-const query = gql`
-  {
-    currencies {
-      label
-      symbol
-    }
-  }
-`;
-
 export const fetchCurrencies = createAsyncThunk(
   'currencies/fetchCurrencies',
   () => {
-    return client.request(query).then((response) => response);
+    return client.request(currenciesQuery).then((response) => response);
   }
 );
 

@@ -19,19 +19,22 @@
       @media screen and (max-width: 1240px) {
         flex-direction: column;
         margin-bottom: 30px;
-        align-items: center;
       }
 
       .gallery {
         margin-right: 40px;
         padding: 3px;
         height: 511px;
+        display: flex;
+        flex-direction: column;
         overflow-y: auto;
-        overflow-x: auto;
+        overflow-x: hidden;
 
         @media screen and (max-width: 1240px) {
-          display: flex;
+          flex-direction: row;
           height: unset;
+          overflow-x: auto;
+          overflow-y: hidden;
         }
 
         &::-webkit-scrollbar {
@@ -53,7 +56,7 @@
         .image {
           width: 79px;
           height: 80px;
-          background-size: cover;
+          object-fit: contain;
           margin-bottom: 20px;
           cursor: pointer;
         }

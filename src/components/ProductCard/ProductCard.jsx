@@ -17,11 +17,20 @@ export class ProductCard extends Component {
     addToCartVisible: false,
   };
 
+  handleClick = () => {
+    const selectedAttributes = {};
+    this.props.product.attributes.forEach(
+      (attribute) => (selectedAttributes[attribute.id] = attribute.items[0].id)
+    );
+    this.props.dispatch(
+      addToCart({ ...this.props.product, selectedAttributes, quantity: 1 })
+    );
+  };
+
   render() {
-    const { id, brand, name, inStock, prices, gallery, attributes } =
-      this.props.product;
-    const selectedCurrency = this.props.selectedCurrency;
+    const { id, brand, name, inStock, prices, gallery } = this.props.product;
     const { addToCartVisible } = this.state;
+    const selectedCurrency = this.props.selectedCurrency;
     const currencyIndex = prices.findIndex(
       (price) => price.currency.label === selectedCurrency.label
     );
@@ -40,24 +49,16 @@ export class ProductCard extends Component {
           })
         }
       >
-        {addToCartVisible && attributes.length === 0 && inStock && (
-          <CartInCircle
-            className="add-to-cart"
-            onClick={() =>
-              this.props.dispatch(
-                addToCart({ ...this.props.product, quantity: 1 })
-              )
-            }
-          />
+        {inStock && addToCartVisible && (
+          <CartInCircle className="add-to-cart" onClick={this.handleClick} />
         )}
         <Link to={`/product/${id}`}>
-          <div
-            style={{ backgroundImage: `url(${gallery[0]})` }}
+          <img
+            src={gallery[0]}
             alt={`${brand} ${name}`}
-            className={`product-image`}
-          >
-            {inStock ? '' : 'OUT OF STOCK'}
-          </div>
+            className="product-image"
+          />
+          {!inStock && <div className="out-of-stock-text">OUT OF STOCK</div>}
           <div className="product-name">
             {brand} {name}
           </div>

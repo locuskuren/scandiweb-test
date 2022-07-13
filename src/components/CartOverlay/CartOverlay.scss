@@ -1,6 +1,6 @@
 @import '../../exports.scss';
 
-.cart {
+.cart-overlay {
   .cart-logo {
     @include flexCenter;
     cursor: pointer;
@@ -22,6 +22,7 @@
 
   .cart-overlay-background {
     position: absolute;
+    height: calc(100% - 80px);
     width: 100%;
     left: 0;
     top: 80px;
